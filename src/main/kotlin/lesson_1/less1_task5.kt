@@ -5,8 +5,8 @@ fun main(){
     val hour = secondInSpace/3600
     val minute =  (secondInSpace % 3600) / 60
     val second = secondInSpace % 60
-    val second1 = second.toString().padStart(2, '0')
+    val second2= second.toString().padStart(2, '0')
 
-    println("$hour:$minute:$second1")
+    println("$hour:$minute:$second2")
 }
 
