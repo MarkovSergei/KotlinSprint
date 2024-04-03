@@ -1,6 +1,7 @@
 package org.example.lesson_2
 
 fun main(){
+
     val allStudent = 4f
     val student1Assessment = 3f
     val student2Assessment = 4f
