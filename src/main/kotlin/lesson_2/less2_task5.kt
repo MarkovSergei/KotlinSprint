@@ -10,5 +10,6 @@ fun main() {
     val deposit = principal * (1 + rate).pow(years)
 
     val formattedDeposit = String.format("%.3f", deposit)
+
     println(formattedDeposit)
 }
