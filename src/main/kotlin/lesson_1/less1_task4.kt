@@ -1,6 +1,7 @@
 package org.example.lesson_1
 
 fun main(){
+
     val length: Long = 40868600000
     val age: Byte = 27
     val partOfDay: Float = 0.075f
