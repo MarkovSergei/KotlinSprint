@@ -1,13 +1,15 @@
 package org.example.lesson_2
 
+const val MINUTE_IN_HOUR = 60
 fun main (){
-    val minuteInHour = 60
+
     val hourDeparture = 9
-    val hourInMinuteDeparture = hourDeparture * minuteInHour
     val minuteDeparture = 39
-    val hourAndMinuteDepartureInMinute = hourInMinuteDeparture + minuteDeparture
     val travelTimeMinutes = 457
-    val arrivalTimeHours = (hourAndMinuteDepartureInMinute + travelTimeMinutes) / minuteInHour
-    val arrivalTimeMinutes = (hourAndMinuteDepartureInMinute + travelTimeMinutes) % minuteInHour
+
+    val hourAndMinuteDepartureInMinute = hourDeparture * MINUTE_IN_HOUR + minuteDeparture + travelTimeMinutes
+    val arrivalTimeHours = hourAndMinuteDepartureInMinute / MINUTE_IN_HOUR
+    val arrivalTimeMinutes = hourAndMinuteDepartureInMinute % MINUTE_IN_HOUR
+
     println("Поезд отправился в $hourDeparture:$minuteDeparture и прибудет в $arrivalTimeHours:$arrivalTimeMinutes")
 }
