@@ -1,5 +1,11 @@
 package org.example.lesson4
 
+const val MINOR_DAMAGE_TO_SHIP_TRUE = true
+const val MIN_CREW = 55
+const val MAX_CREW = 70
+const val MIN_BOXES_OF_PROVISIONS = 50
+const val FAVORABLE_WEATHER_CONDITIONS_TRUE = true
+
 fun main() {
 
     val minorDamageToShip = true
@@ -7,17 +13,19 @@ fun main() {
     val boxesOfProvisions = 55
     val favorableWeatherConditions = false
 
+    println(
+        "Корабль отпраится в плавание? " +
+                "${
+                    minorDamageToShip == !MINOR_DAMAGE_TO_SHIP_TRUE &&
+                            numberOfCrew >= MIN_CREW &&
+                            numberOfCrew <= MAX_CREW &&
+                            boxesOfProvisions > MIN_BOXES_OF_PROVISIONS ||
 
-    println("Корабль отпраится в плавание? " +
-                    "${minorDamageToShip == false && 
-                    numberOfCrew >=55 && 
-                    numberOfCrew <=70 && 
-                    boxesOfProvisions > 50 ||
-                            
-                    minorDamageToShip == true &&
-                    favorableWeatherConditions == true &&
-                    numberOfCrew == 70 &&
-                    boxesOfProvisions > 50        
-    }")
+                            minorDamageToShip == MINOR_DAMAGE_TO_SHIP_TRUE &&
+                            favorableWeatherConditions == FAVORABLE_WEATHER_CONDITIONS_TRUE &&
+                            numberOfCrew == MAX_CREW &&
+                            boxesOfProvisions > MIN_BOXES_OF_PROVISIONS
+                }"
+    )
 
 }
