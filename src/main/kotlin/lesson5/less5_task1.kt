@@ -7,7 +7,7 @@ fun main() {
     val result = firstNumber + secondNumber
     println("Введите правильный ответ:")
     print("$firstNumber + $secondNumber = ")
-    val answer = readlnOrNull()?.toInt()
+    val answer = readln().toInt()
 
     if (answer == result) {
         println("Добро пожаловать!")
