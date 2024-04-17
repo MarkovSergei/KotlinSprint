@@ -19,25 +19,28 @@ fun main() {
     println()
     print("Введите логин: ")
 
-    val login = readln() == USER_NAME
-    when (login) {
-        true -> {
+    val login = readln()
+    when {
+        login == USER_NAME -> {
             print("Введите пароль: ")
-            val password = readln() == USER_PASSWORD
+            val password = readln()
             println()
-            if (password) println(
-                """
+            if (password == USER_PASSWORD) {
+                println(
+                    """
             [вздыхает...] Ваши данные проверены, и о, чудо, они верны... 
             Пользователь "Zaphod", вам разрешено входить на борт корабля "Heart of Gold". 
             Хотя мне всё равно... Ну вперед, войдите... 
             Если вам так уж надо, в конце концов... [меланхолический вздох...] 
             Надеюсь, вам понравится пребывание здесь больше, чем мне.
         """.trimIndent()
-            )
-            else println("Пароль неверный. В доступе отказано. ")
+                )
+            } else {
+                println("Пароль неверный. В доступе отказано. ")
+            }
         }
 
-        false -> println("Пользователь не зарегистрирован. Необходима регистрация.")
+        login != USER_NAME -> println("Пользователь не зарегистрирован. Необходима регистрация.")
     }
 
 
