@@ -9,7 +9,7 @@ fun main() {
             println("Ты угадал! Это была великолепная игра!")
             break
         } else if (userNumber != randomNumber && i > 1) {
-            println("Неверно. Осталось ${i - 1} попыток")
+            println("Неверно. Осталось попыток: ${i - 1}")
         } else {
             println("Ты проиграл. Было загадано число $randomNumber")
         }
