@@ -9,5 +9,4 @@ fun main() {
         Thread.sleep(1000)
     }
     println("Время вышло")
-
 }
