@@ -12,4 +12,5 @@ fun main() {
     println("Бонусы за кристаллическую руду: ${"%.0f".format(buffedCrystals - crystals)}")
     println("Бонусы за железную руду: ${"%.0f".format(buffedIron - iron)}")
 
+
 }
