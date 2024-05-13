@@ -1,23 +1,20 @@
 package org.example.lesson10
 
-fun main() {
-    playGame()
-    gameOver()
-}
-
 var countWin = 0
 
-fun playGame() {
+fun main() {
     print("Ход игрока. Выпало: ")
     val playerStep = generateRandomNumber()
     println(playerStep)
+
     print("Ход компьютера. Выпало: ")
     val compStep = generateRandomNumber()
     println(compStep)
+
     if (playerStep > compStep) {
         println("Победило человечество")
         println()
-        countWin ++
+        countWin++
     } else if (playerStep == compStep) {
         println("Ничья")
         println()
@@ -25,6 +22,7 @@ fun playGame() {
         println("Победила машина")
         println()
     }
+
     restartGame()
 }
 
@@ -35,10 +33,9 @@ fun restartGame() {
     val userInputNewGame = readln()
     println()
     if (userInputNewGame == "Да") {
-        playGame()
+        main()
+    } else {
+        println("Игра окончена. Человечество выйграло: $countWin раз")
     }
 
-}
-fun gameOver() {
-    println("Игра окончена. Человечество выйграло: $countWin раз")
 }
