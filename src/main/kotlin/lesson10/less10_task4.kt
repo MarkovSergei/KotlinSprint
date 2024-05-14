@@ -3,6 +3,21 @@ package org.example.lesson10
 var countWin = 0
 
 fun main() {
+    while (true) {
+        print("Хотите бросить кости? Введите \"да\" или \"нет\": ")
+        val userInputNewGame = readln()
+        if (userInputNewGame == "да") {
+            newRoundGame()
+        } else {
+            println("Игра окончена. Человечество выйграло: $countWin раз")
+            break
+        }
+    }
+}
+
+fun generateRandomNumber() = (1..6).random()
+
+fun newRoundGame() {
     print("Ход игрока. Выпало: ")
     val playerStep = generateRandomNumber()
     println(playerStep)
@@ -23,19 +38,5 @@ fun main() {
         println()
     }
 
-    restartGame()
-}
-
-fun generateRandomNumber() = (1..6).random()
-
-fun restartGame() {
-    print("Хотите бросить кости еще раз? Введите Да или Нет: ")
-    val userInputNewGame = readln()
-    println()
-    if (userInputNewGame == "Да") {
-        main()
-    } else {
-        println("Игра окончена. Человечество выйграло: $countWin раз")
-    }
 
 }
