@@ -13,16 +13,15 @@ fun main() {
     print("Введите логин: ")
     val password = readln()
 
-    val token = authorizesVerifiesGeneratesToken(login, password)
+    val token = authorizesVerifies(login, password)
     getOrderList(token)
 }
 
-fun authorizesVerifiesGeneratesToken(login: String?, password: String?): String? {
-    val symbolList = listOf(('0'..'9') + ('a'..'z') + ('A'..'Z'))
-
+fun authorizesVerifies(login: String, password: String): String? {
     return if (login == LOGIN && password == PASSWORD) {
-        symbolList.random().shuffled().take(TOKEN_LENGTH).joinToString("")
-    } else {
+        generateToken().toString()
+    }
+    else {
         null
     }
 }
@@ -33,4 +32,9 @@ fun getOrderList(token: String?) {
     } else {
         println("Авторизация неудачная")
     }
+}
+
+fun generateToken() {
+    val symbolList = listOf(('0'..'9') + ('a'..'z') + ('A'..'Z'))
+    symbolList.random().shuffled().take(TOKEN_LENGTH).joinToString("")
 }
