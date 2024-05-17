@@ -10,7 +10,7 @@ fun main() {
     print("Введите логин: ")
     val login = readln()
 
-    print("Введите логин: ")
+    print("Введите пароль: ")
     val password = readln()
 
     val token = authorizesVerifies(login, password)
@@ -19,7 +19,7 @@ fun main() {
 
 fun authorizesVerifies(login: String, password: String): String? {
     return if (login == LOGIN && password == PASSWORD) {
-        generateToken().toString()
+        generateToken()
     }
     else {
         null
@@ -34,7 +34,7 @@ fun getOrderList(token: String?) {
     }
 }
 
-fun generateToken() {
+fun generateToken(): String {
     val symbolList = listOf(('0'..'9') + ('a'..'z') + ('A'..'Z'))
-    symbolList.random().shuffled().take(TOKEN_LENGTH).joinToString("")
+    return symbolList.random().shuffled().take(TOKEN_LENGTH).joinToString("")
 }
