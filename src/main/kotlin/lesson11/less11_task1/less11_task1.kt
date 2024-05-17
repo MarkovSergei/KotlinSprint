@@ -9,7 +9,6 @@ data class User(
 
 }
 
-
 fun main() {
     val user1 = User(
         id = "1",
