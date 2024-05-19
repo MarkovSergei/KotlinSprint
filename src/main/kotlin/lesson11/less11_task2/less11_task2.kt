@@ -13,7 +13,11 @@ data class User2(
 
     fun biography(): String {
         print("Введите биографию: ")
-        return readln()
+        return if (readln() == "") {
+            ("Нет данных")
+        } else{
+            readln()
+        }
     }
 
     fun changePassword(): String {
