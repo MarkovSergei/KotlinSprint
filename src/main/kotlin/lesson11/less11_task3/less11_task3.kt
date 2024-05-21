@@ -38,6 +38,6 @@ data class OnlineUser(
 )
 
 fun printRoomInfo(room: Room) {
-    println("/ ${room.name} / ${room.cover} / ${room.onlineUsers.joinToString(", ") 
+    println("/ ${room.name} /  ${room.cover} / ${room.onlineUsers.joinToString(", ") 
     { user -> "${user.nickname} - ${user.status}" }}")
 }
