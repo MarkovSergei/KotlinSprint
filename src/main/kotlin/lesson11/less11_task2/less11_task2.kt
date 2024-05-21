@@ -38,10 +38,11 @@ fun main() {
         "example@mail.ru",
     )
 
-    if (newUser.setBio() == "") {
+    val biography = newUser.setBio()
+    if (biography == "") {
         newUser.bio = "Нет данных"
     } else {
-        newUser.bio = newUser.setBio()
+        newUser.bio = biography
     }
     newUser.password = newUser.changePassword()
     println()
