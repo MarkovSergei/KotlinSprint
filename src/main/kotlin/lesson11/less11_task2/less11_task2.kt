@@ -13,11 +13,7 @@ data class User2(
 
     fun setBio(): String {
         print("Введите биографию: ")
-        return if (readln() == "") {
-            ("Нет данных")
-        } else{
-            readln()
-        }
+        return readln()
     }
 
     fun changePassword(): String {
@@ -40,9 +36,13 @@ fun main() {
         "login",
         "password",
         "example@mail.ru",
-        )
+    )
 
-    newUser.bio = newUser.setBio()
+    if (newUser.setBio() == "") {
+        newUser.bio = "Нет данных"
+    } else {
+        newUser.bio = newUser.setBio()
+    }
     newUser.password = newUser.changePassword()
     println()
     newUser.userInfo()
