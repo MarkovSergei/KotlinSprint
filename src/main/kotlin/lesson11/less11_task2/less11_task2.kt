@@ -11,7 +11,7 @@ data class User2(
         println("ID - $id, \nЛОГИН - $login,\nПАРОЛЬ - $password,\nПОЧТА - $email,\nБИОГРАФИЯ - $bio")
     }
 
-    fun biography(): String {
+    fun setBio(): String {
         print("Введите биографию: ")
         return if (readln() == "") {
             ("Нет данных")
@@ -42,7 +42,7 @@ fun main() {
         "example@mail.ru",
         )
 
-    newUser.bio = newUser.biography()
+    newUser.bio = newUser.setBio()
     newUser.password = newUser.changePassword()
     println()
     newUser.userInfo()
