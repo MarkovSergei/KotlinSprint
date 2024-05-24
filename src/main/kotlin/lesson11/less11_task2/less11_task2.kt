@@ -8,12 +8,20 @@ data class User2(
     var bio: String? = null,
 ) {
     fun userInfo() {
-        println("ID - $id, \nЛОГИН - $login,\nПАРОЛЬ - $password,\nПОЧТА - $email,\nБИОГРАФИЯ - $bio")
+        println(
+            "ID - $id, \nЛОГИН - $login,\nПАРОЛЬ - $password," +
+                    "\nПОЧТА - $email,\nБИОГРАФИЯ - $bio"
+        )
     }
 
     fun setBio(): String {
         print("Введите биографию: ")
-        return readln()
+        val userBio = readln()
+        return if (userBio == "") {
+            "Нет данных"
+        } else {
+            userBio
+        }
     }
 
     fun changePassword(): String {
@@ -38,12 +46,7 @@ fun main() {
         "example@mail.ru",
     )
 
-    val biography = newUser.setBio()
-    if (biography == "") {
-        newUser.bio = "Нет данных"
-    } else {
-        newUser.bio = biography
-    }
+    newUser.bio = newUser.setBio()
     newUser.password = newUser.changePassword()
     println()
     newUser.userInfo()
