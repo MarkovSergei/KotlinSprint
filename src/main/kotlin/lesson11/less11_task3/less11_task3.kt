@@ -6,29 +6,57 @@ fun main() {
         name = "Чат",
     )
 
-    newRoom.addNewOnlineUser(OnlineUser("Avatar1", "Вася", "Микрофон выключен"))
-    newRoom.addNewOnlineUser(OnlineUser("Avatar2", "Петя", "Разговаривает"))
+    newRoom.addNewOnlineUser(
+        OnlineUser(
+            "Аватарка1",
+            "Вася",
+            "Микрофон выключен"
+        )
+    )
+
+    newRoom.addNewOnlineUser(
+        OnlineUser(
+            "Аватарка2",
+            "Петя",
+            "Разговаривает"
+        )
+    )
 
     printRoomInfo(newRoom)
-
-    newRoom.updateStatus("Вася", "Разговаривает")
-
+    newRoom.updateStatus("Вася", "Разговариевает")
+    newRoom.updateStatus("Петя", "Пользователь заглушен")
     printRoomInfo(newRoom)
+
 }
 
 data class Room(
     val cover: String,
     val name: String,
-    var onlineUsers: List<OnlineUser> = emptyList(),
+    val onlineUsers: MutableList<OnlineUser> = mutableListOf()
 ) {
 
     fun addNewOnlineUser(onlineUser: OnlineUser) {
-        onlineUsers += onlineUser
+        onlineUsers.add(onlineUser)
     }
 
     fun updateStatus(user: String, status: String) {
-        onlineUsers.first { it.nickname == user }.status = status
+        for (onlineUser in onlineUsers) {
+            if (onlineUser.nickname == user) {
+                onlineUser.status = status
+                return
+
+            }
+        }
+
     }
+}
+
+fun printRoomInfo(room: Room) {
+    println("/ ${room.name} / ${room.cover} / ${
+        room.onlineUsers.joinToString(", ")
+        { user -> "${user.nickname} - ${user.status}" }
+    }"
+    )
 }
 
 data class OnlineUser(
@@ -36,8 +64,3 @@ data class OnlineUser(
     val nickname: String,
     var status: String
 )
-
-fun printRoomInfo(room: Room) {
-    println("/ ${room.name} /  ${room.cover} / ${room.onlineUsers.joinToString(", ") 
-    { user -> "${user.nickname} - ${user.status}" }}")
-}
