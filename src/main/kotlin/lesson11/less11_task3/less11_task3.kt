@@ -40,23 +40,19 @@ data class Room(
     }
 
     fun updateStatus(user: String, status: String) {
-        for (onlineUser in onlineUsers) {
-            if (onlineUser.nickname == user) {
-                onlineUser.status = status
-                return
-
-            }
+        val onlineUser = onlineUsers.find { it.nickname == user }
+        if (onlineUser != null) {
+            onlineUser.status = status
         }
-
     }
 }
 
 fun printRoomInfo(room: Room) {
-    println("/ ${room.name} / ${room.cover} / ${
-        room.onlineUsers.joinToString(", ")
-        { user -> "${user.nickname} - ${user.status}" }
-    }"
-    )
+    val name = "/ ${room.name}"
+    val cover = "/ ${room.cover} / "
+    val usersString = room.onlineUsers.joinToString(", ")
+    { user -> "${user.nickname} - ${user.status}" }
+    println("$name $cover $usersString")
 }
 
 data class OnlineUser(
