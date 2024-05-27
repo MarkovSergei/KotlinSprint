@@ -5,37 +5,42 @@ fun main() {
     val userName = "Вася"
 
     val newUser = Forum(userId, userName)
-
+    newUser.createNewUser(userId, userName)
 }
 
 class Forum(
     userId: Int,
-    userName: String
+    userName: String,
 ) {
+    var membersList = mutableListOf<ForumMember>()
+    var messagesList = mutableListOf<ForumMessage>()
 
+    fun createNewUser(userId: Int, userName: String) {
+        ForumMember.createNewUser(membersList, userId, userName)
+    }
 
-    val forumMember = ForumMember(userId, userName)
     fun createNewMessage() {
     }
 
     fun printThread() {
-
     }
 }
 
-data class ForumMember(
+class ForumMember(
     val userId: Int,
     val userName: String,
 ) {
-    private val usersList = mutableListOf(userId, userName)
-
-    fun createNewUser() {
+    companion object {
+        fun createNewUser(membersList: MutableList<ForumMember>, userId: Int, userName: String) {
+            if (!membersList.any { it.userId == userId && it.userName == userName }) {
+                membersList.add(ForumMember(userId, userName))
+            }
+        }
     }
-
 }
 
 data class ForumMessage(
+    val messageId: Int,
     val authorId: Int,
     val message: String,
 )
-
