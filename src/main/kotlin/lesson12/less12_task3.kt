@@ -1,35 +1,28 @@
 package org.example.lesson12
 
+const val KELVIN = 273
+
 fun main() {
     val weatherData3 = WeatherDataKelvin(
-        293,
+        283,
         280,
         true
     )
     weatherData3.printWeather()
 }
 
-class WeatherDataKelvin {
-    private var dayTemperature: Int = 0
-    private var nightTemperature: Int = 0
-    private var precipitation: Boolean = false
+class WeatherDataKelvin(
+    dayTemperatureInKelvin: Int,
+    nightTemperatureInKelvin: Int,
+    private val precipitation: Boolean = false,
+) {
+    private val dayTemperatureInCelsius = dayTemperatureInKelvin - KELVIN
+    private val nightTemperatureInCelsius = nightTemperatureInKelvin - KELVIN
 
-    constructor(
-        dayTemperatureInKelvin: Int,
-        nightTemperatureInKelvin: Int,
-        precipitation: Boolean
-    ) {
-        val dayTemperatureInCelsius = dayTemperatureInKelvin - 273
-        val nightTemperatureInCelsius = nightTemperatureInKelvin - 273
-
-        this.dayTemperature = dayTemperatureInCelsius
-        this.nightTemperature = nightTemperatureInCelsius
-        this.precipitation = precipitation
-    }
 
     fun printWeather() {
-        println("Температура днём: $dayTemperature °C")
-        println("Температура ночью: $nightTemperature °C")
+        println("Температура днём: $dayTemperatureInCelsius °C")
+        println("Температура ночью: $nightTemperatureInCelsius °C")
         println("Осадки: $precipitation")
         println()
     }
