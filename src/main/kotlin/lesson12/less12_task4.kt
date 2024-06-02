@@ -1,5 +1,7 @@
 package org.example.lesson12
 
+const val KELVIN = 273
+
 fun main() {
     val weatherData4 = WeatherDataKelvin1(
         298,
@@ -13,15 +15,8 @@ class WeatherDataKelvin1(
     nightTemperatureInKelvin: Int,
     precipitation: Boolean = false
 ) {
-    private var dayTemperature: Int = 0
-    private var nightTemperature: Int = 0
-
-    init {
-        val dayTemperatureInCelsius = dayTemperatureInKelvin - 273
-        val nightTemperatureInCelsius = nightTemperatureInKelvin - 273
-        this.dayTemperature = dayTemperatureInCelsius
-        this.nightTemperature = nightTemperatureInCelsius
-    }
+    private val dayTemperature: Int = dayTemperatureInKelvin - KELVIN
+    private var nightTemperature: Int = nightTemperatureInKelvin - KELVIN
 
     init {
         println("Температура днём: $dayTemperature °C")
