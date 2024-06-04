@@ -10,12 +10,13 @@ fun main() {
 class Contact1(
     name: String,
     telNumber: Long,
-    company: String? = null ?: "<не указано>"
+    company: String? = null
 ) {
     init {
-        println("Имя - $name\n" +
-                "Номер телефона - $telNumber\n" +
-                "Компания - $company"
+        println(
+            "Имя - $name\n" +
+                    "Номер телефона - $telNumber\n" +
+                    "Компания - ${company ?: "<не указано>"}"
         )
     }
 }
