@@ -32,7 +32,7 @@ fun main() {
 
 class Contact3(
     private val name: String,
-    private val telNumber: Long?,
+    private val telNumber: Long,
     private val company: String? = null
 ) {
     fun printUserContact() {
