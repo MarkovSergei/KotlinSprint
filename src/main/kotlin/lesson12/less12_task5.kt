@@ -1,19 +1,19 @@
 package org.example.lesson12
 
+import java.util.*
+
 fun main() {
 
     val weatherValueList = mutableListOf<WeatherValueClass>()
     val tempValue = (-30..30)
 
+    val random = Random()
     for (i in 30 downTo 1) {
         weatherValueList.add(
             WeatherValueClass(
                 tempValue.random(),
                 tempValue.random(),
-                when ((0..1).random()) {
-                    1 -> true
-                    else -> false
-                }
+                random.nextBoolean()
             )
         )
     }
