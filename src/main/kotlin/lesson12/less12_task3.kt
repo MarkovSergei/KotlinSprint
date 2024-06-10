@@ -1,6 +1,6 @@
 package org.example.lesson12
 
-const val KELVIN = 273
+const val KELVIN: Int = 273
 
 fun main() {
     val weatherData3 = WeatherDataKelvin(
