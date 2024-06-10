@@ -38,7 +38,7 @@ class Cargo(
 class Icebreaker(
     name: String,
     private val iceBreak: Boolean = true,
-) : Liner(name,) {
+) : Liner(name) {
     override  val speed = 12
     override  val capacity = 50
 
