@@ -50,7 +50,7 @@ class Cargo1(
 class Icebreaker1(
     name: String,
     private val iceBreak: Boolean = true,
-) : Liner1(name,) {
+) : Liner1(name) {
     override  val speed = 12
     override  val capacity = 50
 
