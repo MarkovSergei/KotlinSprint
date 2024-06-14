@@ -3,9 +3,12 @@ package org.example.lesson14
 fun main() {
     val chat = Chat()
 
-    chat.addMessage("Привет!", "Вася")
-    chat.addThreadMessage("1", "Как дела?", "Света")
-    chat.addThreadMessage("1", "Нормально?", "Вася")
+    chat.addMessage("1", "Привет", "Вася")
+    chat.addThreadMessage("1", "1", "Как дела?", "Света")
+    chat.addThreadMessage("1", "2", "Нормально", "Вася")
+
+    chat.addMessage("2", "Новая ветка", "Феокла")
+    chat.addThreadMessage("2", "3", "Проверка", "Аристарх")
 
     chat.printChat()
 }
@@ -13,33 +16,43 @@ fun main() {
 class Chat {
     private val messages = mutableListOf<Message>()
 
-    fun addMessage(text: String, author: String) {
-        messages.add(Message(text, author))
+    fun addMessage(
+        id: String,
+        text: String,
+        author: String,
+    ) {
+        messages.add(Message(id, text, author))
     }
 
-    fun addThreadMessage(parentMessageId: String, text: String, author: String) {
-        messages.add(ChildMessage(parentMessageId, text, author))
+    fun addThreadMessage(
+        parentMessageId: String,
+        id: String,
+        text: String,
+        author: String
+    ) {
+        messages.add(ChildMessage(parentMessageId, id, text, author))
     }
 
     fun printChat() {
         for (message in messages) {
-            message.run {
-                if (this is ChildMessage) println("${parentMessageId}\t$this")
-                else println(this)
+            if (message is ChildMessage) {
+                println("\t${message.text} (автор: ${message.author})")
+            } else {
+                println("${message.text} (автор: ${message.author})")
             }
         }
     }
 }
 
-open class Message {
-    constructor(text: String, author: String)
-    constructor()
-    open val id: String = ""
-}
+open class Message(
+    open val id: String,
+    open val text: String,
+    open val author: String,
+)
 
 data class ChildMessage(
-    override val id: String,
     val parentMessageId: String,
-    val text: String
-) : Message() {
-}
+    override val id: String,
+    override val text: String,
+    override val author: String,
+) : Message(parentMessageId, text, author)
