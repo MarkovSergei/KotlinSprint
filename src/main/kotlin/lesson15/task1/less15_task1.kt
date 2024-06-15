@@ -14,8 +14,16 @@ fun main() {
 
 }
 
+interface Flyable {
+    fun fly()
+}
+
+interface Swimable {
+    fun swim()
+}
+
 class Carp : Swimable {
-    override val name: String = "Carp"
+     private val name: String = "Carp"
 
     override fun swim() {
         println("$name плывет")
@@ -24,7 +32,7 @@ class Carp : Swimable {
 }
 
 class Seagull : Swimable, Flyable {
-    override val name: String = "Seagull"
+    private val name: String = "Seagull"
     override fun fly() {
         println("$name летит")
         println()
@@ -36,7 +44,7 @@ class Seagull : Swimable, Flyable {
 }
 
 class Duck : Swimable, Flyable {
-    override val name: String = "Duck"
+    private val name: String = "Duck"
 
     override fun fly() {
         println("$name летит")
