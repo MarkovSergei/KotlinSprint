@@ -1,18 +1,18 @@
 package org.example.lesson15
 
 fun main() {
-    val newUser = User(2,"User1", "12345")
+    val newUser = User(2, "User1", "12345")
     newUser.readForum()
     newUser.writeMessage("Привет")
 
-    val newAdmin = Admin(1,"Admin1", "54321")
+    val newAdmin = Admin(1, "Admin1", "54321")
     newAdmin.writeMessage("Пока")
     newAdmin.deleteUser(1)
 
 }
 
 abstract class ForumUser {
-    abstract  val id: Int
+    abstract val id: Int
     abstract val username: String
     abstract val password: String
 
@@ -20,7 +20,7 @@ abstract class ForumUser {
     abstract fun writeMessage(message: String)
 }
 
-class User(override val id: Int, override val username: String, override val password: String): ForumUser() {
+class User(override val id: Int, override val username: String, override val password: String) : ForumUser() {
     override fun readForum() {
         println("$username читает форум")
     }
@@ -30,7 +30,7 @@ class User(override val id: Int, override val username: String, override val pas
     }
 }
 
-class Admin(override val id: Int, override val username: String, override val password: String): ForumUser() {
+class Admin(override val id: Int, override val username: String, override val password: String) : ForumUser() {
     override fun readForum() {
         println("$username читает форум")
     }
