@@ -2,17 +2,16 @@ package org.example.lesson15_task2
 
 fun main() {
     val weatherServer = WeatherServer()
-    weatherServer.addWeatherData(Temperature(20))
-    weatherServer.addWeatherData(PrecipitationAmount(50))
+    weatherServer.addWeatherData(WeatherServer.Temperature(30))
+    weatherServer.addWeatherData(WeatherServer.PrecipitationAmount(50))
+    weatherServer.addWeatherData(WeatherServer.Temperature(10))
 
-    weatherServer.addWeatherData(Temperature(30))
-
-    weatherServer.sendMessage("temperature")
-    weatherServer.sendMessage("precipitation")
+    weatherServer.sendMessage()
 }
 
 abstract class WeatherStationStats {
     abstract fun getData(): String
+    abstract fun getType(): String
 }
 
 class WeatherServer {
@@ -22,8 +21,8 @@ class WeatherServer {
         weatherData.add(data)
     }
 
-    fun sendMessage(messageType: String) {
-        when (messageType) {
+    fun sendMessage() {
+        when (weatherData.first().getType()) {
             "temperature" -> {
                 for (data in weatherData) {
                     if (data is Temperature) {
@@ -45,16 +44,24 @@ class WeatherServer {
             }
         }
     }
-}
 
-class PrecipitationAmount(private val amount: Int) : WeatherStationStats() {
-    override fun getData(): String {
-        return "$amount мм осадков"
+    class PrecipitationAmount(private val amount: Int) : WeatherStationStats() {
+        override fun getData(): String {
+            return "$amount мм осадков"
+        }
+
+        override fun getType(): String {
+            return "precipitation"
+        }
     }
-}
 
-class Temperature(private val temp: Int) : WeatherStationStats() {
-    override fun getData(): String {
-        return "$temp градусов Цельсия"
+    class Temperature(private val temp: Int) : WeatherStationStats() {
+        override fun getData(): String {
+            return "$temp градусов Цельсия"
+        }
+
+        override fun getType(): String {
+            return "temperature"
+        }
     }
 }
