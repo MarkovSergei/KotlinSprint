@@ -20,6 +20,7 @@ class WeatherServer {
         when (data) {
             is Temperature -> println(data.getData())
             is PrecipitationAmount -> println(data.getData())
+            else -> println("Неизвестное сообщение")
         }
     }
 
