@@ -13,5 +13,5 @@ class User {
         val isValid = password == correctPassword
         return println("Пароль $password релевантен: $isValid")
     }
-    }
+}
 
