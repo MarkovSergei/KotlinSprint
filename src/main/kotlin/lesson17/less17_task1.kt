@@ -8,7 +8,7 @@ fun main() {
 
 class Quiz(
     private val question: String,
-    private val answer: Int
+    private var answer: Int
 ) {
     val newQuestion: String
         get() {
@@ -20,5 +20,6 @@ class Quiz(
             return answer
         }
         set(value) {
+            answer = value
         }
 }
