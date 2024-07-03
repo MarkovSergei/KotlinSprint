@@ -1,7 +1,7 @@
 package org.example.lesson17
 
 fun main() {
-    val newUser = Person("Семён", "123")
+    val newUser = Person("Семён", "7894561230")
     newUser.newLogin = "Семён Семёныч"
     newUser.password = "4564646"
     println(newUser.password)
@@ -19,11 +19,13 @@ class Person(
             }
         }
     var password: String = password
+        get() {
+            return "*".repeat(field.length)
+        }
         set(value) {
             if (value != password) {
                 field = password
                 println("Поменять пароль нельзя")
             }
-
         }
 }
