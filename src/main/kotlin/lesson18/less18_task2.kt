@@ -17,5 +17,6 @@ fun main() {
     for (dice in diceList) {
         dice.roll()
     }
+
 }
 
