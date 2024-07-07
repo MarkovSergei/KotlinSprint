@@ -9,7 +9,7 @@ fun main() {
     }
 }
 
-open class Animal(val name: String) {
+abstract class Animal(val name: String) {
     open fun eat() {}
     fun sleep() {
         println("[$name] -> [спит]")
