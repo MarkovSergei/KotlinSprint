@@ -13,9 +13,7 @@ abstract class Package(
     val width: Double,
     val height: Double
 ) {
-    open fun calculateSurfaceArea(): Double {
-        return 0.0
-    }
+    abstract fun calculateSurfaceArea(): Double
 }
 
 class RectangularPackage(
