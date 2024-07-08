@@ -1,41 +1,43 @@
 package org.example.lesson18
 
-import java.awt.Graphics
+fun main() {
+    val screen = Screen()
 
+    screen.draw(Point(1.0f, 2.0f))
+    screen.draw(Square(3.0f, 4.0f))
+    screen.draw(Circle(6.0f, 7.0f))
 
-open class Shape(
-    val x: Float,
-    val y: Float
-)
+    screen.draw(Point(10, 20))
+    screen.draw(Square(20, 20))
+    screen.draw(Circle(6, 7))
+}
 
-class Point(
-    x: Float,
-    y: Float
-) : Shape(x, y)
+class Point(private val x: Number, private val y: Number) {
+    fun getX(): Number = x
+    fun getY(): Number = y
+}
 
-class Square(
-    x: Float,
-    y: Float,
-    val size: Float
-) : Shape(x, y)
+class Square(private val x: Number, private val y: Number) {
+    fun getX(): Number = x
+    fun getY(): Number = y
+}
 
-class Circle(
-    x: Float,
-    y: Float,
-    val radius: Float
-) : Shape(x, y)
+class Circle(private val x: Number, private val y: Number) {
+    fun getX(): Number = x
+    fun getY(): Number = y
+}
 
 class Screen {
-    fun draw(g: Graphics, point: Point) {
-        g.fillOval(point.x.toInt(), point.y.toInt(), 1, 1)
+
+    fun draw(point: Point) {
+        println("Рисуем точку с координатами (${point.getX()}, ${point.getY()})")
     }
 
-    fun draw(g: Graphics, square: Square) {
-        g.fillRect(square.x.toInt(), square.y.toInt(), square.size.toInt(), square.size.toInt())
+    fun draw(square: Square) {
+        println("Рисуем квадрат с координатами (${square.getX()}, ${square.getY()})")
     }
 
-    fun draw(g: Graphics, circle: Circle) {
-        g.fillOval(circle.x.toInt(), circle.y.toInt(), (circle.radius * 2).toInt(), (circle.radius * 2).toInt())
+    fun draw(circle: Circle) {
+        println("Рисуем круг с координатами (${circle.getX()}, ${circle.getY()})")
     }
-
 }
