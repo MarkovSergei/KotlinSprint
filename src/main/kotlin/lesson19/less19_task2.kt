@@ -3,13 +3,14 @@ package org.example.lesson19
 enum class Category {
     CLOTHES,
     STATIONERY,
-    OTHER,
-}
-fun getCategoryName(category: Category): String {
-    return when (category) {
-        Category.CLOTHES -> "Одежда"
-        Category.STATIONERY -> "канцелярские товары"
-        Category.OTHER -> "разное"
+    OTHER;
+
+    fun getName(): String {
+        return when (this) {
+            CLOTHES -> "Одежда"
+            STATIONERY -> "Канцелярские товары"
+            OTHER -> "Разное"
+        }
     }
 }
 
@@ -19,7 +20,7 @@ class Product(
     private val category: Category
 ) {
     fun info() {
-        println("$name ($id) - ${getCategoryName(category)}")
+        println("$name ($id) - ${category.getName()}")
     }
 }
 
