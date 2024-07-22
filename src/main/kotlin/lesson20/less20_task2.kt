@@ -7,6 +7,7 @@ fun main() {
     println("Здоровье игрока ${player.name} - ${player.currentHealth}")
 }
 
+
 data class Player(
     val name: String,
     val maxHealth: Int,
