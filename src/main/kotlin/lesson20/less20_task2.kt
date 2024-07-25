@@ -12,3 +12,4 @@ data class Player(
     val maxHealth: Int,
     var currentHealth: Int,
 )
+
