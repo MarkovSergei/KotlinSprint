@@ -21,6 +21,6 @@ fun main() {
     println(regularBook1 == regularBook2)
 
     print("Сравнение экземпляров класса DataBook: ")
-    println(dataBook1.equals(dataBook2))
+    println(dataBook1 == dataBook2)
 
 }
