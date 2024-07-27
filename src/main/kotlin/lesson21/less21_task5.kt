@@ -10,10 +10,7 @@ fun main() {
     println("Максимальный опыт: $maxSkill")
 }
 
-fun <K, V : Comparable<V>> Map<K, V>.maxCategory(): K? {
-    val entries = this.entries.toList()
-    if (entries.isEmpty()) return null
-
-    val maxEntry = entries.maxByOrNull { it.value } ?: return null
-    return maxEntry.key
+fun Map<String, Int>.maxCategory(): String? {
+    return this.maxByOrNull { it.value }?.key
 }
+
