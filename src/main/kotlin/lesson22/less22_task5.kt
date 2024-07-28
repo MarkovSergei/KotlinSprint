@@ -17,8 +17,8 @@ fun main() {
         4.37
     )
 
-    println("Название: ${alphaCentauri.name}")
-    println("Описание: ${alphaCentauri.description}")
-    println("Дата: ${alphaCentauri.date}")
-    println("Расстояние: ${alphaCentauri.distance} световых лет")
+    println("Название: ${alphaCentauri.component1()}")
+    println("Описание: ${alphaCentauri.component2()}")
+    println("Дата: ${alphaCentauri.component3()}")
+    println("Расстояние: ${alphaCentauri.component4()} световых лет")
 }
