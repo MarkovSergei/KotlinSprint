@@ -1,10 +1,10 @@
 package org.example.lesson22
+class MainScreenViewModel {
+    data class MainScreenState(val data: String, val isLoading: Boolean)
 
-data class MainScreenState(val data: String, val isLoading: Boolean)
-
-class MainScreenViewModel : ViewModel() {
     private var _mainScreenState = MainScreenState("", false)
-    val mainScreenState: LiveData<MainScreenState> = _mainScreenState
+    val mainScreenState: MainScreenState
+        get() = _mainScreenState
 
     fun loadData() {
         _mainScreenState = _mainScreenState.copy(isLoading = true)
